@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply font-sans text-[16px] min-w-[320px];
+  }
+
+  main {
+    @apply min-h-screen;
+  }
+
+  * {
+    @apply text-[1rem] break-words min-w-[0] focus-visible:outline-none focus:outline-none;
+  }
+}
+
+@layer components {
+}
+
+@layer utilities {
+}
