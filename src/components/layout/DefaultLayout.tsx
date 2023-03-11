@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Loading from './Loading';
 import Header from './Header';
 import Footer from './Footer';
+import JumpTop from './JumpTop';
 
 type tProps = {
   children: JSX.Element;
@@ -18,8 +19,9 @@ function DefaultLayout(props: tProps) {
     <>
       {props.loading && <Loading />}
       <Header />
-      <main className="py-[20px] sm:py-[50px]">{props.children}</main>
+      <main className="layout-positioner py-[20px] sm:py-[50px]">{props.children}</main>
       <Footer />
+      <JumpTop />
     </>
   );
 }

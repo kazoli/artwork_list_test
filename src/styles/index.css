@@ -17,6 +17,9 @@
 }
 
 @layer components {
+  .layout-positioner {
+    @apply m-[0_auto] px-[15px] max-w-[1400px];
+  }
 }
 
 @layer utilities {

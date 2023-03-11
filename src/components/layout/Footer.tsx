@@ -1,7 +1,7 @@
 function Footer() {
   return (
-    <footer className="flex items-center bg-[#f0f0f0] border-y border-[#b0b0b0] min-h-[60px]">
-      <div className="text-[#a0a0a0] flex-auto">
+    <footer className="flex items-center shadow-[0_0_10px_0_#000] bg-[#b17640] py-[10px]">
+      <div className="layout-positioner text-[#ffffff] flex-auto">
         Powered By Art Institute of Chicago API. Designed by Kazoli.
       </div>
     </footer>
