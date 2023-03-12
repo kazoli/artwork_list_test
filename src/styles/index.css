@@ -18,7 +18,23 @@
 
 @layer components {
   .layout-positioner {
-    @apply m-[0_auto] px-[15px] max-w-[1400px];
+    @apply m-[0_auto] px-[15px] max-w-[1200px];
+  }
+
+  .header-center {
+    @apply flex flex-col flex-wrap items-center justify-center text-[#505050];
+  }
+
+  .header-center.active {
+    @apply text-[#b17640];
+  }
+
+  .header-center:hover {
+    @apply underline;
+  }
+
+  .header-center-icon {
+    @apply text-[1.5rem];
   }
 }
 

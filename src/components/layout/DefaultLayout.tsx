@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import Loading from './Loading';
-import Header from './Header';
-import Footer from './Footer';
-import JumpTop from './JumpTop';
+import Loading from './general/Loading';
+import Header from './header/Header';
+import Footer from './footer/Footer';
+import JumpTop from './general/JumpTop';
 
 type tProps = {
   children: JSX.Element;
