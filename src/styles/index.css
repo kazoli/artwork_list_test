@@ -25,16 +25,36 @@
     @apply flex flex-col flex-wrap items-center justify-center text-[#505050];
   }
 
-  .header-center.active {
-    @apply text-[#b17640];
-  }
-
   .header-center:hover {
     @apply underline;
   }
 
   .header-center-icon {
     @apply text-[1.5rem];
+  }
+
+  .text-highlighted {
+    @apply text-[#b17640];
+  }
+
+  .icon-button {
+    @apply flex items-center justify-center cursor-pointer h-[1.5rem] w-[1.5rem] shadow-[inset_0_0_2px_1px_#979797];
+  }
+
+  .icon-button.hover {
+    @apply hover:shadow-[inset_0_0_2px_1px_#b17640] hover:text-[#b17640];
+  }
+
+  .icon-button.highlighted {
+    @apply shadow-[inset_0_0_2px_1px_#b17640] text-[#b17640];
+  }
+
+  .list-element {
+    @apply relative flex items-center gap-[10px] bg-[#fff] shadow-[0_0_0_1px_#d0d0d0] p-[10px];
+  }
+
+  .transition-custom {
+    @apply transition-all duration-300;
   }
 }
 

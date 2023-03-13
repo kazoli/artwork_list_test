@@ -27,7 +27,7 @@ function Header() {
 
   return (
     <header
-      className={`${position} transition-all duration-500 sticky z-[1000] bg-[#fff] py-[10px] shadow-[inset_0_0_10px_0_#777,0_0_2px_0_#777] border-y border-[#777]`}
+      className={`${position} sticky z-[1000] py-[10px] bg-[#fff] shadow-[inset_0_0_10px_0_#777,0_0_2px_0_#777] border-y border-[#777]`}
     >
       <div className="layout-positioner flex items-center justify-between gap-[60px]">
         <HeaderLogo />

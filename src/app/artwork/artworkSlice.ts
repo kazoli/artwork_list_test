@@ -1,12 +1,21 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { initialArtworkReduxState } from './artworkInitialState';
+import { initialArtworkReduxState } from './artworkInitialStates';
+import { tArtworkReduxState } from './artworkTypes';
 
 // artwork reducers and extra reducers
 const artworkSlice = createSlice({
   name: 'artwork',
   initialState: initialArtworkReduxState,
   reducers: {
-    artwork: (state, action: PayloadAction<string>) => {},
+    updateArtworkQueryParts: (
+      state,
+      action: PayloadAction<{
+        queryPart: keyof tArtworkReduxState['queryParts'];
+        value: string;
+      }>,
+    ) => {
+      state.queryParts[action.payload.queryPart] = action.payload.value;
+    },
   },
   // extraReducers: (builder) => {
   //   builder
@@ -22,5 +31,5 @@ const artworkSlice = createSlice({
   // },
 });
 
-export const { artwork } = artworkSlice.actions;
+export const { updateArtworkQueryParts } = artworkSlice.actions;
 export default artworkSlice.reducer;
