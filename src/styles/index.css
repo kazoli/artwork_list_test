@@ -22,11 +22,7 @@
   }
 
   .header-center {
-    @apply flex flex-col flex-wrap items-center justify-center text-[#505050];
-  }
-
-  .header-center:hover {
-    @apply underline;
+    @apply flex flex-col flex-wrap items-center justify-center text-[#505050] hover:underline;
   }
 
   .header-center-icon {

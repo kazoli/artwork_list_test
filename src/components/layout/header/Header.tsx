@@ -10,7 +10,7 @@ function Header() {
   useEffect(() => {
     const prev = { top: window.scrollY, position: 'top-0' };
     const updateScrollDirection = () => {
-      const currPosition = window.scrollY > prev.top ? 'top-[-200px]' : 'top-0';
+      const currPosition = window.scrollY > prev.top ? 'top-[-100px]' : 'top-0';
       if (prev.position !== currPosition) {
         // scroll direction change
         setPosition(currPosition);
@@ -27,7 +27,7 @@ function Header() {
 
   return (
     <header
-      className={`${position} sticky z-[1000] py-[10px] bg-[#fff] shadow-[inset_0_0_10px_0_#777,0_0_2px_0_#777] border-y border-[#777]`}
+      className={`${position} sticky z-[1000] py-[10px] bg-[#fff] shadow-[inset_0_0_10px_0_#777,0_0_2px_0_#777] border-y border-[#777] transition-all duration-500`}
     >
       <div className="layout-positioner flex items-center justify-between gap-[60px]">
         <HeaderLogo />
