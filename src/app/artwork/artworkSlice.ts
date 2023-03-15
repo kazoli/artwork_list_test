@@ -9,23 +9,33 @@ const artworkSlice = createSlice({
   name: 'artwork',
   initialState: initialArtworkReduxState,
   reducers: {
-    updateListKeywords: (
+    artworkSetMainListQuery: (
       state,
-      action: PayloadAction<tArtworkReduxState['queryParts']['keywords']>,
+      action: PayloadAction<tArtworkReduxState['mainListQuery']>,
+    ) => {
+      state.mainListQuery = action.payload;
+    },
+    artworkSetMainListKeywords: (
+      state,
+      action: PayloadAction<tArtworkReduxState['mainListKeywords']>,
     ) => {
       // if keywords changes, page is set back to 1st one
-      state.queryParts.page = '1';
-      state.queryParts.keywords = action.payload;
+      state.mainListPage = '1';
+      // remove leading and trailing white spaces
+      state.mainListKeywords = action.payload.trim();
     },
-    updateListLimit: (state, action: PayloadAction<tArtworkReduxState['queryParts']['limit']>) => {
+    artworkSetMainListLimit: (
+      state,
+      action: PayloadAction<tArtworkReduxState['mainListLimit']>,
+    ) => {
       // if limit changes, page is set back to 1st one
-      state.queryParts.page = '1';
-      state.queryParts.limit = action.payload;
+      state.mainListPage = '1';
+      state.mainListLimit = action.payload;
     },
-    updateListPage: (state, action: PayloadAction<tArtworkReduxState['queryParts']['page']>) => {
-      state.queryParts.page = action.payload;
+    artworkSetMainListPage: (state, action: PayloadAction<tArtworkReduxState['mainListPage']>) => {
+      state.mainListPage = action.payload;
     },
-    updateListView: (state, action: PayloadAction<tArtworkReduxState['listView']>) => {
+    artworkSetListView: (state, action: PayloadAction<tArtworkReduxState['listView']>) => {
       setLocalStorage('listView', action.payload);
       state.listView = action.payload;
     },
@@ -37,6 +47,18 @@ const artworkSlice = createSlice({
       })
       .addCase(artworkGetData.fulfilled, (state, action) => {
         state.status = 'idle';
+        if (state.mainListKeywords) {
+          // removing _score from data
+          action.payload.data = action.payload.data.map((data) => ({
+            id: data.id,
+            image_id: data.image_id,
+            title: data.title,
+          }));
+        }
+        state.mainList = action.payload.data;
+        state.mainListResult = `${action.payload.total} ${
+          action.payload.total > 1 ? 'results' : 'result'
+        }`;
       })
       .addCase(artworkGetData.rejected, (state) => {
         state.status = 'failed';
@@ -44,6 +66,11 @@ const artworkSlice = createSlice({
   },
 });
 
-export const { updateListKeywords, updateListLimit, updateListPage, updateListView } =
-  artworkSlice.actions;
+export const {
+  artworkSetMainListQuery,
+  artworkSetMainListKeywords,
+  artworkSetMainListLimit,
+  artworkSetMainListPage,
+  artworkSetListView,
+} = artworkSlice.actions;
 export default artworkSlice.reducer;

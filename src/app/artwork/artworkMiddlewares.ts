@@ -1,11 +1,27 @@
+import { artworkApiUrl } from './artworkInitialStates';
 import { tArtworkReduxState } from './artworkTypes';
 
 // build url for list
-export const buildListUrl = (
-  queryParts: tArtworkReduxState['queryParts'],
-  prevQuery: tArtworkReduxState['prevQuery'],
+export const buildMainQuery = (
+  mainListKeywords: tArtworkReduxState['mainListKeywords'],
+  mainListLimit: tArtworkReduxState['mainListLimit'],
+  mainListPage: tArtworkReduxState['mainListPage'],
 ) => {
-  console.log(prevQuery);
-  console.log(queryParts);
-  return '';
+  // set fields for query
+  let query = '';
+
+  // adding keywords and / or fields to query
+  if (mainListKeywords) {
+    query += `/search?q=${mainListKeywords}&fields=id,title,image_id`;
+  } else {
+    query += `?fields=id,title,image_id`;
+  }
+
+  // adding limit to query
+  query += `&limit=${mainListLimit}`;
+
+  // adding page to query
+  query += `&page=${mainListPage}`;
+
+  return artworkApiUrl + query;
 };

@@ -1,19 +1,24 @@
 import { tListView } from '../general/types';
 
 // Type of artwork element for lists
-export type tArtworkElement = {};
+export type tArtworkListElement = {
+  id: number;
+  image_id: string;
+  title: string;
+};
 
 // Type of redux state
 export type tArtworkReduxState = {
   status: 'idle' | 'loading' | 'failed';
-  favorites: tArtworkElement[];
-  list: tArtworkElement[];
-  listResult: string;
   listView: tListView;
-  prevQuery: string;
-  queryParts: {
-    keywords: string;
-    limit: string;
-    page: string;
-  };
+
+  mainListResult: string;
+  mainListKeywords: string;
+  mainListLimit: string;
+  mainListPage: string;
+  mainListQuery: string;
+  mainList: tArtworkListElement[];
+
+  favoriteListKeywords: string;
+  favoriteList: tArtworkListElement[];
 };

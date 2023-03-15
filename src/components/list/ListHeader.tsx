@@ -2,18 +2,20 @@ import { useAppDispatch } from '../../app/general/hooks';
 import { tArtworkReduxState } from '../../app/artwork/artworkTypes';
 import { artworkLimits } from '../../app/artwork/artworkInitialStates';
 import {
-  updateListKeywords,
-  updateListLimit,
-  updateListView,
+  artworkSetMainListKeywords,
+  artworkSetMainListLimit,
+  artworkSetListView,
 } from '../../app/artwork/artworkSlice';
 import ListSearch from './ListSearch';
 import ListLimits from './ListLimits';
 import ListView from './ListView';
 
 type tProps = {
-  queryParts: tArtworkReduxState['queryParts'];
-  listView: tArtworkReduxState['listView'];
-  listResult: tArtworkReduxState['listResult'];
+  keywords: tArtworkReduxState['mainListKeywords'];
+  result: tArtworkReduxState['mainListResult'];
+  limit: tArtworkReduxState['mainListLimit'];
+  page: tArtworkReduxState['mainListPage'];
+  view: tArtworkReduxState['listView'];
 };
 
 function ListHeader(props: tProps) {
@@ -22,18 +24,18 @@ function ListHeader(props: tProps) {
   return (
     <section>
       <ListSearch
-        keywords={props.queryParts.keywords}
-        action={(value) => dispatch(updateListKeywords(value))}
+        keywords={props.keywords}
+        action={(value) => dispatch(artworkSetMainListKeywords(value))}
       />
       <div className="flex flex-wrap-reverse items-center justify-between gap-[15px] my-[15px]">
-        <div className="list-element">{props.listResult}</div>
+        <div className="list-element">{props.result}</div>
         <div className="flex flex-wrap-reverse items-center gap-[15px]">
           <ListLimits
-            limit={props.queryParts.limit}
+            limit={props.limit}
             limits={artworkLimits}
-            action={(value) => dispatch(updateListLimit(value))}
+            action={(value) => dispatch(artworkSetMainListLimit(value))}
           />
-          <ListView listView={props.listView} action={(value) => dispatch(updateListView(value))} />
+          <ListView view={props.view} action={(value) => dispatch(artworkSetListView(value))} />
         </div>
       </div>
     </section>

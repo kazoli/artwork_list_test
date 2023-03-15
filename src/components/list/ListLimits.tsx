@@ -5,7 +5,7 @@ import DropDownMenu from '../general/DropDownMenu';
 import DropDownSelector from '../general/DropDownSelector';
 
 type tProps = {
-  limit: tArtworkReduxState['queryParts']['limit'];
+  limit: tArtworkReduxState['mainListLimit'];
   limits: tDropDownOptions;
   action: (value: string) => void;
 };
