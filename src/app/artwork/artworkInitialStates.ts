@@ -6,7 +6,7 @@ import { tArtworkReduxState } from './artworkTypes';
 export const artworkApiUrl = 'https://api.artic.edu/api/v1/artworks';
 
 // Dinamic image url
-export const artworkApiImageUrl = (id: number) =>
+export const artworkApiImageUrl = (id: string) =>
   `https://www.artic.edu/iiif/2/${id}/full/843,/0/default.jpg`;
 
 // Base state of limits of artwork pages

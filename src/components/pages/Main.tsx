@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/general/hooks';
-import { artworkGetData } from '../../app/artwork/artworkThunks';
+import { artworkGetMainList } from '../../app/artwork/artworkThunks';
 import { buildMainQuery } from '../../app/artwork/artworkMiddlewares';
 import DefaultLayout from '../layout/DefaultLayout';
 import ListHeader from '../list/ListHeader';
@@ -28,7 +28,7 @@ function Main() {
       if (url !== artwork.mainListQuery) {
         console.log('mainListQuery', artwork.mainListQuery); // TODO
         dispatch(artworkSetMainListQuery(url));
-        // dispatch(artworkGetData(url));
+        // dispatch(artworkGetMainList(url));
       }
     }, 250);
     return () => {

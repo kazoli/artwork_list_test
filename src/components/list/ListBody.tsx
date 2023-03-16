@@ -7,12 +7,12 @@ type tProps = {
 };
 
 function ListBody(props: tProps) {
-  const view = props.view === 'list' ? '' : 'grid-cols-[repeat(auto-fill,minmax(300px,1fr))]';
+  const view = props.view === 'list' ? '' : 'grid-cols-[repeat(auto-fill,minmax(290px,1fr))]';
 
   return (
-    <section className={`grid gap-[20px] ${view}`}>
+    <section className={`grid gap-[15px] ${view}`}>
       {props.list.map((data) => (
-        <ListBodyElement data={data} />
+        <ListBodyElement key={data.id} data={data} />
       ))}
     </section>
   );

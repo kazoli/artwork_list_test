@@ -33,10 +33,20 @@
     @apply text-[#b17640];
   }
 
+  .link-button,
   .icon-button {
-    @apply flex items-center justify-center cursor-pointer h-[1.5rem] w-[1.5rem] shadow-[inset_0_0_2px_1px_#979797];
+    @apply flex items-center justify-center cursor-pointer shadow-[inset_0_0_2px_1px_#979797];
   }
 
+  .link-button {
+    @apply p-[5px_10px] text-[#777];
+  }
+
+  .icon-button {
+    @apply h-[1.5rem] w-[1.5rem];
+  }
+
+  .link-button.hover,
   .icon-button.hover {
     @apply hover:shadow-[inset_0_0_2px_1px_#b17640] hover:text-[#b17640];
   }

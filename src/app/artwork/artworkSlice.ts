@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { tArtworkReduxState } from './artworkTypes';
+import { tArtworkListElement, tArtworkReduxState } from './artworkTypes';
 import { initialArtworkReduxState } from './artworkInitialStates';
-import { artworkGetData } from './artworkThunks';
+import { artworkGetMainList } from './artworkThunks';
 import { setLocalStorage } from '../general/middlewares';
 
 // artwork reducers and extra reducers
@@ -39,13 +39,19 @@ const artworkSlice = createSlice({
       setLocalStorage('listView', action.payload);
       state.listView = action.payload;
     },
+    artworkAddFavorite: (state, action: PayloadAction<tArtworkListElement>) => {
+      state.favoriteList = [action.payload, ...state.favoriteList];
+    },
+    artworkRemoveFavorite: (state, action: PayloadAction<tArtworkListElement['id']>) => {
+      state.favoriteList = state.favoriteList.filter((favorite) => favorite.id !== action.payload);
+    },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(artworkGetData.pending, (state) => {
+      .addCase(artworkGetMainList.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(artworkGetData.fulfilled, (state, action) => {
+      .addCase(artworkGetMainList.fulfilled, (state, action) => {
         state.status = 'idle';
         if (state.mainListKeywords) {
           // removing _score from data
@@ -60,7 +66,7 @@ const artworkSlice = createSlice({
           action.payload.total > 1 ? 'results' : 'result'
         }`;
       })
-      .addCase(artworkGetData.rejected, (state) => {
+      .addCase(artworkGetMainList.rejected, (state) => {
         state.status = 'failed';
       });
   },
@@ -72,5 +78,7 @@ export const {
   artworkSetMainListLimit,
   artworkSetMainListPage,
   artworkSetListView,
+  artworkAddFavorite,
+  artworkRemoveFavorite,
 } = artworkSlice.actions;
 export default artworkSlice.reducer;

@@ -4,7 +4,7 @@ import { errorHandler } from '../general/error';
 import { tArtworkListElement } from './artworkTypes';
 
 // Get data
-export const artworkGetData = createAsyncThunk<
+export const artworkGetMainList = createAsyncThunk<
   { total: number; data: (tArtworkListElement & { _score?: number })[] },
   string,
   { rejectValue: string }
