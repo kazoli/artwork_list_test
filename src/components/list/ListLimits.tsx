@@ -1,16 +1,16 @@
 import { useMemo } from 'react';
 import { tArtworkReduxState } from '../../app/artwork/artworkTypes';
-import { tDropDownOptions } from '../../app/general/types';
+import { tDropDownOption } from '../../app/general/types';
 import DropDownMenu from '../general/DropDownMenu';
 import DropDownSelector from '../general/DropDownSelector';
 
 type tProps = {
   limit: tArtworkReduxState['mainListLimit'];
-  limits: tDropDownOptions;
-  action: (value: string) => void;
+  limits: tDropDownOption[];
+  action: (value: tDropDownOption['key']) => void;
 };
 
-type tDropDown = { selected: string | JSX.Element; options: tDropDownOptions };
+type tDropDown = { selected: string | JSX.Element; options: tDropDownOption[] };
 
 function ListLimits(props: tProps) {
   const dropDown: tDropDown = useMemo(() => {

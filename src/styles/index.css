@@ -18,7 +18,7 @@
 
 @layer components {
   .layout-positioner {
-    @apply m-[0_auto] px-[15px] max-w-[1400px];
+    @apply m-[0_auto] px-[15px] max-w-[1200px];
   }
 
   .header-center {
@@ -39,7 +39,7 @@
   }
 
   .link-button {
-    @apply p-[5px_10px] text-[#777];
+    @apply px-[5px] text-[#777];
   }
 
   .icon-button {
@@ -49,6 +49,11 @@
   .link-button.hover,
   .icon-button.hover {
     @apply hover:shadow-[inset_0_0_2px_1px_#b17640] hover:text-[#b17640];
+  }
+
+  .link-button.disabled,
+  .icon-button.disabled {
+    @apply cursor-auto bg-[#a7a7a7] !shadow-[inset_0_0_2px_1px_#777] !text-[#fff];
   }
 
   .icon-button.highlighted {

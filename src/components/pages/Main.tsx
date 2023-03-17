@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/general/hooks';
 import { artworkGetMainList } from '../../app/artwork/artworkThunks';
+import { artworkSetMainListQuery } from '../../app/artwork/artworkSlice';
 import { buildMainQuery } from '../../app/artwork/artworkMiddlewares';
 import DefaultLayout from '../layout/DefaultLayout';
 import ListHeader from '../list/ListHeader';
-import { artworkSetMainListQuery } from '../../app/artwork/artworkSlice';
 import ListBodyEmpty from '../list/ListBodyEmpty';
 import ListBody from '../list/ListBody';
+import ListFooter from '../list/ListFooter';
 
 function Main() {
   const dispatch = useAppDispatch();
@@ -18,7 +19,6 @@ function Main() {
 
   useEffect(() => {
     const timerId = setTimeout(() => {
-      console.log('buildQuery', artwork.mainListQuery); //TODO
       const url = buildMainQuery(
         artwork.mainListKeywords,
         artwork.mainListLimit,
@@ -26,13 +26,14 @@ function Main() {
       );
       // to avoid unnecessary requests if query has not changed
       if (url !== artwork.mainListQuery) {
-        console.log('mainListQuery', artwork.mainListQuery); // TODO
+        console.log('PREV', artwork.mainListQuery); // TODO
+        console.log('NEW', url); // TODO
         dispatch(artworkSetMainListQuery(url));
         // dispatch(artworkGetMainList(url));
       }
-    }, 250);
+    }, 750);
     return () => {
-      // to cancel out double request to artwork api because of initial double rendering of strict mode in development
+      // to throttle too fast consecutive requesting to 1 query / second  and send only the last one
       clearTimeout(timerId);
     };
   }, [
@@ -50,13 +51,20 @@ function Main() {
           keywords={artwork.mainListKeywords}
           result={artwork.mainListResult}
           limit={artwork.mainListLimit}
-          page={artwork.mainListPage}
           view={artwork.listView}
+          mainList={true}
         />
-        {!artwork.mainList.length ? (
+        {!artwork.mainListResult ? (
           <ListBodyEmpty />
         ) : (
-          <ListBody list={artwork.mainList} view={artwork.listView} />
+          <>
+            <ListBody list={artwork.mainList} view={artwork.listView} />
+            <ListFooter
+              result={artwork.mainListResult}
+              totalPage={artwork.mainListTotalPage}
+              page={artwork.mainListPage}
+            />
+          </>
         )}
       </>
     </DefaultLayout>

@@ -1,5 +1,5 @@
 import { AiOutlineHome } from 'react-icons/ai';
-import { MdOutlineFavoriteBorder } from 'react-icons/md';
+import { TbHeart } from 'react-icons/tb';
 import { NavLink } from 'react-router-dom';
 
 function HeaderNavigation() {
@@ -20,7 +20,7 @@ function HeaderNavigation() {
           isActive ? 'header-center text-highlighted' : 'header-center'
         }
       >
-        <MdOutlineFavoriteBorder className="header-center-icon" />
+        <TbHeart className="header-center-icon" />
         <span>Favorites</span>
       </NavLink>
     </nav>

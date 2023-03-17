@@ -5,7 +5,7 @@ import { tArtworkListElement } from './artworkTypes';
 
 // Get data
 export const artworkGetMainList = createAsyncThunk<
-  { total: number; data: (tArtworkListElement & { _score?: number })[] },
+  { total: number; total_pages: number; data: (tArtworkListElement & { _score?: number })[] },
   string,
   { rejectValue: string }
 >('artwork/artworkGetData', async (query, thunkAPI) => {
@@ -13,6 +13,7 @@ export const artworkGetMainList = createAsyncThunk<
     const response = await axios.get(encodeURI(query));
     return {
       total: response.data.pagination.total,
+      total_pages: response.data.pagination.total_pages,
       data: response.data.data,
     };
   } catch (error) {

@@ -1,12 +1,12 @@
-import { tDropDownOptions } from '../../app/general/types';
+import { tDropDownOption } from '../../app/general/types';
 
 type tProps = {
   classContainer: string;
   classList: string;
   classElement: string;
   selector: string | JSX.Element;
-  options: tDropDownOptions;
-  action: (value: string) => void;
+  options: tDropDownOption[];
+  action: (value: tDropDownOption['key']) => void;
 };
 
 function DropDownMenu(props: tProps) {

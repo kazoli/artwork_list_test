@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { scrollTop } from '../../app/general/middlewares';
 import Loading from './general/Loading';
 import Header from './header/Header';
 import Footer from './footer/Footer';
@@ -12,7 +13,7 @@ type tProps = {
 function DefaultLayout(props: tProps) {
   useEffect(() => {
     // scroll top in case of page change
-    window.scrollTo(0, 0);
+    scrollTop();
   }, []);
 
   return (

@@ -11,7 +11,7 @@ function ImageBlock(props: tProps) {
   const [bigImg, setBigImg] = useState(false);
   const imgParentClass = bigImg
     ? 'fixed inset-0 z-[100000] bg-[#000]'
-    : 'shadow-[inset_0_0_10px_0_#e0e0e0] bg-[#f7f7f7] p-[10px] sm:h-[420px] sm:w-[420px]';
+    : 'shadow-[inset_0_0_10px_0_#e0e0e0] bg-[#f7efe9] p-[10px] sm:h-[420px] sm:w-[420px]';
   const imgClass = bigImg
     ? 'max-w-screen max-h-screen transition-custom'
     : 'max-h-[400px] max-w-[400px]';

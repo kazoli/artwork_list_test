@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { scrollTop } from '../../../app/general/middlewares';
 import { AiOutlineUpSquare } from 'react-icons/ai';
 
 function JumpTop() {
@@ -14,12 +15,7 @@ function JumpTop() {
         <AiOutlineUpSquare
           className="fixed bottom-[15px] right-[15px] bg-[#909090] hover:bg-[#b17640] text-[2rem] text-[#ffffff] cursor-pointer transition-custom opacity-50 hover:opacity-100 z-[10000]"
           title="Jump top"
-          onClick={() =>
-            window.scrollTo({
-              top: 0,
-              behavior: 'smooth',
-            })
-          }
+          onClick={() => scrollTop('smooth')}
         />
       )}
     </>

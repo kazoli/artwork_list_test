@@ -5,6 +5,7 @@ export type tArtworkListElement = {
   id: number;
   image_id: string;
   title: string;
+  favorite: boolean;
 };
 
 // Type of redux state
@@ -12,10 +13,11 @@ export type tArtworkReduxState = {
   status: 'idle' | 'loading' | 'failed';
   listView: tListView;
 
-  mainListResult: string;
+  mainListResult: number;
   mainListKeywords: string;
-  mainListLimit: string;
-  mainListPage: string;
+  mainListLimit: number;
+  mainListPage: number;
+  mainListTotalPage: number;
   mainListQuery: string;
   mainList: tArtworkListElement[];
 

@@ -1,13 +1,15 @@
 type tProps = {
+  class: string;
+  text: string;
+  action?: () => void;
   icon?: JSX.Element;
-  action: () => void;
 };
 
 function LinkButton(props: tProps) {
   return (
-    <button className="link-button hover" onClick={props.action}>
+    <button className={`${props.class} link-button hover`} onClick={props.action}>
       {props.icon}
-      <span>Favorite</span>
+      <span>{props.text}</span>
     </button>
   );
 }
