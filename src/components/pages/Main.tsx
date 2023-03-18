@@ -26,10 +26,8 @@ function Main() {
       );
       // to avoid unnecessary requests if query has not changed
       if (url !== artwork.mainListQuery) {
-        console.log('PREV', artwork.mainListQuery); // TODO
-        console.log('NEW', url); // TODO
         dispatch(artworkSetMainListQuery(url));
-        // dispatch(artworkGetMainList(url));
+        dispatch(artworkGetMainList(url));
       }
     }, 750);
     return () => {
@@ -54,7 +52,7 @@ function Main() {
           view={artwork.listView}
           mainList={true}
         />
-        {!artwork.mainListResult ? (
+        {!artwork.mainList.length ? (
           <ListBodyEmpty />
         ) : (
           <>

@@ -1,7 +1,7 @@
 # Pull Docker Hub base image
 FROM node:16
 # Set working directory
-WORKDIR /app
+WORKDIR /artwork_list_test
 # Install app dependencies
 COPY package*.json ./
 RUN npm install -qy

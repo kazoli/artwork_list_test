@@ -1,8 +1,8 @@
-import { tArtworkListElement, tArtworkReduxState } from '../../app/artwork/artworkTypes';
+import { tArtworkBaseData, tArtworkReduxState } from '../../app/artwork/artworkTypes';
 import ListBodyElement from './ListBodyElement';
 
 type tProps = {
-  list: tArtworkListElement[];
+  list: tArtworkBaseData[];
   view: tArtworkReduxState['listView'];
 };
 

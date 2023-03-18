@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { tArtworkListElement, tArtworkReduxState } from './artworkTypes';
-import { initialArtworkReduxState } from './artworkInitialStates';
-import { artworkGetMainList } from './artworkThunks';
+import { tArtworkBaseData, tArtworkReduxState } from './artworkTypes';
+import { initialArtworkDetails, initialArtworkReduxState } from './artworkInitialStates';
+import { artworkGetDetails, artworkGetMainList } from './artworkThunks';
 import {
   arrayIncludes,
   scrollTop,
@@ -47,7 +47,7 @@ const artworkSlice = createSlice({
       setLocalStorage('listView', action.payload);
       state.listView = action.payload;
     },
-    artworkAddFavorite: (state, action: PayloadAction<tArtworkListElement>) => {
+    artworkAddFavorite: (state, action: PayloadAction<tArtworkBaseData>) => {
       const favorites = [action.payload, ...state.favoriteList];
       // if max lenght of storage would be exceeded then drops the the last element from the array
       if (storageMaxLengthExceeded(favorites)) {
@@ -58,13 +58,17 @@ const artworkSlice = createSlice({
       state.favoriteList = favorites;
       // change favorite property of selected element
       state.mainList = setMainListFavorites(state);
+      if (state.details.id) {
+        state.details.favorite = true;
+      }
     },
-    artworkRemoveFavorite: (state, action: PayloadAction<tArtworkListElement['id']>) => {
+    artworkRemoveFavorite: (state, action: PayloadAction<tArtworkBaseData['id']>) => {
       state.favoriteList = state.favoriteList.filter((favorite) => favorite.id !== action.payload);
       // store shrunk favorites array into local storage
       setLocalStorage('favorites', state.favoriteList);
       // change favorite property of selected element
       state.mainList = setMainListFavorites(state);
+      state.details.favorite = false;
     },
     artworkSetFavouriteListKeywords: (
       state,
@@ -72,6 +76,9 @@ const artworkSlice = createSlice({
     ) => {
       // remove leading and trailing white spaces
       state.favoriteListKeywords = action.payload.trim();
+    },
+    artworkResetDetails: (state) => {
+      state.details = initialArtworkDetails;
     },
   },
   extraReducers: (builder) => {
@@ -84,7 +91,7 @@ const artworkSlice = createSlice({
         // adding favorite property to list
         state.mainList = action.payload.data.map((data) => ({
           id: data.id,
-          image_id: data.image_id,
+          imageId: data.image_id,
           title: data.title,
           favorite: !!arrayIncludes(state.favoriteList, 'id', data.id),
         }));
@@ -92,6 +99,24 @@ const artworkSlice = createSlice({
         state.mainListTotalPage = action.payload.total_pages;
       })
       .addCase(artworkGetMainList.rejected, (state) => {
+        state.status = 'failed';
+      })
+
+      .addCase(artworkGetDetails.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(artworkGetDetails.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.details = {
+          id: action.payload.id,
+          imageId: action.payload.image_id,
+          title: action.payload.title,
+          artist: action.payload.artist_display,
+          department: action.payload.department_title,
+          favorite: !!arrayIncludes(state.favoriteList, 'id', action.payload.id),
+        };
+      })
+      .addCase(artworkGetDetails.rejected, (state) => {
         state.status = 'failed';
       });
   },
@@ -106,5 +131,6 @@ export const {
   artworkAddFavorite,
   artworkRemoveFavorite,
   artworkSetFavouriteListKeywords,
+  artworkResetDetails,
 } = artworkSlice.actions;
 export default artworkSlice.reducer;

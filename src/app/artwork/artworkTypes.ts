@@ -1,14 +1,14 @@
 import { tListView } from '../general/types';
 
-// Type of artwork element for lists
-export type tArtworkListElement = {
+// type of artwork element for lists
+export type tArtworkBaseData = {
   id: number;
-  image_id: string;
+  imageId: string;
   title: string;
   favorite: boolean;
 };
 
-// Type of redux state
+// type of redux state
 export type tArtworkReduxState = {
   status: 'idle' | 'loading' | 'failed';
   listView: tListView;
@@ -19,8 +19,13 @@ export type tArtworkReduxState = {
   mainListPage: number;
   mainListTotalPage: number;
   mainListQuery: string;
-  mainList: tArtworkListElement[];
+  mainList: tArtworkBaseData[];
 
   favoriteListKeywords: string;
-  favoriteList: tArtworkListElement[];
+  favoriteList: tArtworkBaseData[];
+
+  details: tArtworkBaseData & {
+    artist: string;
+    department: string;
+  };
 };
