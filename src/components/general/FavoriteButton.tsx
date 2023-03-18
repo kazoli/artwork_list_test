@@ -15,14 +15,14 @@ function FavoriteButton(props: tProps) {
     <>
       {props.data.favorite ? (
         <LinkButton
-          class="py-[10px] text-[1.1rem]"
+          class="p-[10px] text-[1.1rem]"
           action={() => dispatch(artworkRemoveFavorite(props.data.id))}
           icon={<TbHeartOff className="mr-[5px] text-[1.1rem]" />}
           text="Remove from favorites"
         />
       ) : (
         <LinkButton
-          class="py-[10px] text-[1.1rem]"
+          class="p-[10px] text-[1.1rem]"
           action={() => dispatch(artworkAddFavorite({ ...props.data, favorite: true }))}
           icon={<TbHeart className="mr-[5px] text-[1.1rem]" />}
           text="Add to favorites"
