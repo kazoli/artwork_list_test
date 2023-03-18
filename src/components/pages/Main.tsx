@@ -29,7 +29,7 @@ function Main() {
         dispatch(artworkSetMainListQuery(url));
         dispatch(artworkGetMainList(url));
       }
-    }, 750);
+    }, 500);
     return () => {
       // to throttle too fast consecutive requesting to 1 query / second  and send only the last one
       clearTimeout(timerId);
