@@ -2,32 +2,32 @@ import { tArtworkReduxState } from './artworkTypes';
 import { artworkApiUrl } from './artworkInitialStates';
 import { arrayIncludes, getLocalStorage } from '../general/middlewares';
 
-// intializing list view from localstorage
+// Intializing list view from localstorage
 export const intializeListView = () => {
   const listView = getLocalStorage('listView');
   return listView ? listView : 'grid';
 };
 
-// intializing favroite list from localstorage
+// Intializing favroite list from localstorage
 export const intializeFavoriteList = () => {
   const favoriteList = getLocalStorage('favorites');
   return Array.isArray(favoriteList) ? favoriteList : [];
 };
 
-// modifying main list favorite properties
+// Modifying main list favorite properties
 export const setMainListFavorites = (state: tArtworkReduxState) =>
   state.mainList.map((data) => ({
     ...data,
     favorite: !!arrayIncludes(state.favoriteList, 'id', data.id),
   }));
 
-// build url for list
+// Build url for list
 export const buildMainQuery = (
   mainListKeywords: tArtworkReduxState['mainListKeywords'],
   mainListLimit: tArtworkReduxState['mainListLimit'],
   mainListPage: tArtworkReduxState['mainListPage'],
 ) => {
-  // set fields for query
+  // set query
   let query = '';
 
   // adding keywords and / or fields to query

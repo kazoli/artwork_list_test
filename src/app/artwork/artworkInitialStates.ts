@@ -2,21 +2,21 @@ import { tDropDownOption } from '../general/types';
 import { tArtworkReduxState } from './artworkTypes';
 import { intializeFavoriteList, intializeListView } from './artworkMiddlewares';
 
-// base url
+// Base url
 export const artworkApiUrl = 'https://api.artic.edu/api/v1/artworks';
 
-// dinamic image url
+// Dinamic image url
 export const artworkApiImageUrl = (id: string) =>
   `https://www.artic.edu/iiif/2/${id}/full/843,/0/default.jpg`;
 
-// base state of limits of artwork pages
+// Base state of limits of artwork pages
 export const artworkLimits: tDropDownOption[] = [
   { key: 12, value: '12 / page' },
   { key: 24, value: '24 / page' },
   { key: 48, value: '48 / page' },
 ];
 
-// initial details of artwork
+// Initial details of artwork and freezing it to surely keep intact
 export const initialArtworkDetails: tArtworkReduxState['details'] = {
   id: 0,
   imageId: '',
@@ -27,10 +27,10 @@ export const initialArtworkDetails: tArtworkReduxState['details'] = {
 };
 Object.freeze(initialArtworkDetails);
 
-// initial state of redux for artwork slice
+// Initial state of redux for artwork slice
 export const initialArtworkReduxState: tArtworkReduxState = {
   status: 'idle',
-  listView: intializeListView(),
+  listView: intializeListView(), // get initial state from localstorage
 
   mainListResult: 0,
   mainListKeywords: '',
@@ -41,7 +41,7 @@ export const initialArtworkReduxState: tArtworkReduxState = {
   mainList: [],
 
   favoriteListKeywords: '',
-  favoriteList: intializeFavoriteList(),
+  favoriteList: intializeFavoriteList(), // get initial state from localstorage
 
   details: initialArtworkDetails,
 };

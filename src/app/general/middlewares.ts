@@ -1,13 +1,13 @@
 // ~ 5 mbytes is the maximum size of local storage values
 export const storageMaxLengthExceeded = (value: object) => JSON.stringify(value).length > 5000000;
 
-// set data into localstorage
+// Set data into localstorage
 export const setLocalStorage = (key: string, value: string | object | object[]) => {
   if (typeof value !== 'string') value = JSON.stringify(value);
   localStorage.setItem(key, value);
 };
 
-// get data from localstorage
+// Get data from localstorage
 export const getLocalStorage = (key: string) => {
   const value = localStorage.getItem(key);
   if (value) {
@@ -22,7 +22,7 @@ export const getLocalStorage = (key: string) => {
   }
 };
 
-// scroll top
+// Scroll top
 export const scrollTop = (behavior: 'auto' | 'smooth' = 'auto') => {
   window.scrollTo({
     top: 0,
@@ -31,7 +31,7 @@ export const scrollTop = (behavior: 'auto' | 'smooth' = 'auto') => {
   });
 };
 
-// check an array contains an element
+// Check an array contains an element
 export const arrayIncludes = (
   array: { [key: string]: string | number | boolean }[],
   key: string,

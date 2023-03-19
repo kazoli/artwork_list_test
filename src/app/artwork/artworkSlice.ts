@@ -10,7 +10,7 @@ import {
 } from '../general/middlewares';
 import { setMainListFavorites } from './artworkMiddlewares';
 
-// artwork reducers and extra reducers
+// Artwork reducers and extra reducers
 const artworkSlice = createSlice({
   name: 'artwork',
   initialState: initialArtworkReduxState,
@@ -58,6 +58,7 @@ const artworkSlice = createSlice({
       state.favoriteList = favorites;
       // change favorite property of selected element
       state.mainList = setMainListFavorites(state);
+      // if setting of favorite comes from details page
       if (state.details.id) {
         state.details.favorite = true;
       }
@@ -68,6 +69,7 @@ const artworkSlice = createSlice({
       setLocalStorage('favorites', state.favoriteList);
       // change favorite property of selected element
       state.mainList = setMainListFavorites(state);
+      // if setting of favorite comes from details page
       state.details.favorite = false;
     },
     artworkSetFavouriteListKeywords: (
@@ -78,6 +80,7 @@ const artworkSlice = createSlice({
       state.favoriteListKeywords = action.payload.trim();
     },
     artworkResetDetails: (state) => {
+      // deatils object is set back to initial state
       state.details = initialArtworkDetails;
     },
   },
@@ -95,7 +98,9 @@ const artworkSlice = createSlice({
           title: data.title,
           favorite: !!arrayIncludes(state.favoriteList, 'id', data.id),
         }));
+        // changing result number of main list
         state.mainListResult = action.payload.total;
+        // changing total pages for paginator to work correctly in main list
         state.mainListTotalPage = action.payload.total_pages;
       })
       .addCase(artworkGetMainList.rejected, (state) => {
@@ -107,6 +112,7 @@ const artworkSlice = createSlice({
       })
       .addCase(artworkGetDetails.fulfilled, (state, action) => {
         state.status = 'idle';
+        // storing details page data object
         state.details = {
           id: action.payload.id,
           imageId: action.payload.image_id,

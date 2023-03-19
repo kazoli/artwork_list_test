@@ -1,6 +1,6 @@
 import { tListView } from '../general/types';
 
-// type of artwork element for lists
+// Base type for artwork elements
 export type tArtworkBaseData = {
   id: number;
   imageId: string;
@@ -8,7 +8,7 @@ export type tArtworkBaseData = {
   favorite: boolean;
 };
 
-// type of redux state
+// Type of redux state
 export type tArtworkReduxState = {
   status: 'idle' | 'loading' | 'failed';
   listView: tListView;

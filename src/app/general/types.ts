@@ -1,5 +1,5 @@
-// type of dropdown options
+// Type of dropdown options
 export type tDropDownOption = { key: string | number; value: string | JSX.Element };
 
-// type of view modes
+// Type of view modes
 export type tListView = 'grid' | 'list';

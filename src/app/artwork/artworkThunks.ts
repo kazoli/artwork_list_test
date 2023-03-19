@@ -3,7 +3,7 @@ import axios from 'axios';
 import { errorHandler } from '../general/error';
 import { tArtworkReduxState, tArtworkBaseData } from './artworkTypes';
 
-// get main list data
+// Get data of main list
 export const artworkGetMainList = createAsyncThunk<
   {
     total: number;
@@ -30,7 +30,7 @@ export const artworkGetMainList = createAsyncThunk<
   }
 });
 
-// get details data
+// Get data of details page
 export const artworkGetDetails = createAsyncThunk<
   {
     id: tArtworkReduxState['details']['id'];
