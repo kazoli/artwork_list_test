@@ -39,7 +39,7 @@
   }
 
   .link-button {
-    @apply px-[5px] text-[#777];
+    @apply px-[5px];
   }
 
   .icon-button {
