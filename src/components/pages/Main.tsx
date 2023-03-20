@@ -31,7 +31,7 @@ function Main() {
       }
     }, 500);
     return () => {
-      // to throttle too fast consecutive requesting to 1 query / second  and send only the last one
+      // to throttle too fast consecutive requesting and send only the last one after the delay
       clearTimeout(timerId);
     };
   }, [

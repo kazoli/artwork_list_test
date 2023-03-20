@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { tArtworkReduxState } from '../../app/artwork/artworkTypes';
 import { useAppSelector } from '../../app/general/hooks';
+import { tArtworkReduxState } from '../../app/artwork/artworkTypes';
 import DefaultLayout from '../layout/DefaultLayout';
-import ListBody from '../list/ListBody';
-import ListBodyEmpty from '../list/ListBodyEmpty';
 import ListHeader from '../list/ListHeader';
+import ListBodyEmpty from '../list/ListBodyEmpty';
+import ListBody from '../list/ListBody';
 
 function Favorites() {
   const artwork = useAppSelector((state) => state.artwork);

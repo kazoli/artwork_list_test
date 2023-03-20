@@ -1,8 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 
 type tProps = {
-  url: string;
+  reloadAction: () => void;
 };
 
 function MissingData(props: tProps) {
@@ -15,7 +14,11 @@ function MissingData(props: tProps) {
           Home page
         </Link>{' '}
         or try to{' '}
-        <Link to={props.url} className="text-[1.5rem] text-[#0000ff]">
+        <Link
+          to={window.location.href}
+          onClick={props.reloadAction}
+          className="text-[1.5rem] text-[#0000ff]"
+        >
           reload this page
         </Link>
         .

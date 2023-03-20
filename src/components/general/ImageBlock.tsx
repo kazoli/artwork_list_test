@@ -15,16 +15,17 @@ function ImageBlock(props: tProps) {
   const imgClass = bigImg
     ? 'max-w-screen max-h-screen transition-custom'
     : 'max-h-[400px] max-w-[400px]';
-  const closeClass = bigImg ? '' : 'hidden';
 
   return (
     <div
       className={`${imgParentClass} flex flex-[1_1_auto] items-center justify-center cursor-pointer`}
       onClick={() => setBigImg(!bigImg)}
     >
-      <AiOutlineClose
-        className={`${closeClass} fixed top-[10px] right-[10px] bg-black/20 text-[#fff] text-[30px]`}
-      />
+      {bigImg && (
+        <AiOutlineClose
+          className={`fixed top-[10px] right-[10px] bg-black/20 text-[#fff] text-[30px]`}
+        />
+      )}
       <img
         src={props.src}
         alt={props.alt}

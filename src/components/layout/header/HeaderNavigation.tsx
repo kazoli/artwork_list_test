@@ -1,6 +1,6 @@
+import { NavLink } from 'react-router-dom';
 import { AiOutlineHome } from 'react-icons/ai';
 import { TbHeart } from 'react-icons/tb';
-import { NavLink } from 'react-router-dom';
 
 function HeaderNavigation() {
   return (

@@ -1,6 +1,6 @@
 import { useAppDispatch } from '../../app/general/hooks';
-import { artworkAddFavorite, artworkRemoveFavorite } from '../../app/artwork/artworkSlice';
 import { tArtworkBaseData } from '../../app/artwork/artworkTypes';
+import { artworkAddFavorite, artworkRemoveFavorite } from '../../app/artwork/artworkSlice';
 import { TbHeart, TbHeartOff } from 'react-icons/tb';
 import LinkButton from './LinkButton';
 

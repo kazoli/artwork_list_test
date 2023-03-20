@@ -1,5 +1,5 @@
-import { TfiLayoutGrid2, TfiViewList } from 'react-icons/tfi';
 import { tArtworkReduxState } from '../../app/artwork/artworkTypes';
+import { TfiLayoutGrid2, TfiViewList } from 'react-icons/tfi';
 
 type tProps = {
   view: tArtworkReduxState['listView'];

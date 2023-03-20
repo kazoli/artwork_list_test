@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/general/hooks';
 import { artworkGetDetails } from '../../app/artwork/artworkThunks';
 import { artworkApiImageUrl, artworkApiUrl } from '../../app/artwork/artworkInitialStates';
-import DefaultLayout from '../layout/DefaultLayout';
 import { artworkResetDetails } from '../../app/artwork/artworkSlice';
+import DefaultLayout from '../layout/DefaultLayout';
 import MissingData from '../general/MissingData';
 import ImageBlock from '../general/ImageBlock';
 import FavoriteButton from '../general/FavoriteButton';
@@ -13,25 +13,22 @@ function Details() {
   const params = useParams();
   const dispatch = useAppDispatch();
   const artwork = useAppSelector((state) => state.artwork);
+  const url = `${artworkApiUrl}/${params.artworkId}?fields=id,title,image_id,artist_display,department_title`;
 
   useEffect(() => {
     document.title = 'ArtWork - Details';
-    dispatch(
-      artworkGetDetails(
-        `${artworkApiUrl}/${params.artworkId}?fields=id,title,image_id,artist_display,department_title`,
-      ),
-    );
+    dispatch(artworkGetDetails(url));
     return () => {
       // clean up
       dispatch(artworkResetDetails());
     };
-  }, [dispatch, params.artworkId]);
+  }, [dispatch, url]);
 
   return (
     <DefaultLayout loading={artwork.status === 'loading'}>
       <>
         {artwork.status === 'failed' ? (
-          <MissingData url={`/details/${params.artworkId}`} />
+          <MissingData reloadAction={() => dispatch(artworkGetDetails(url))} />
         ) : (
           !!artwork.details.id && (
             <div className="flex flex-wrap gap-[10px] sm:gap-[30px]">
