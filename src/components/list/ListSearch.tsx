@@ -20,10 +20,10 @@ function ListSearch(props: tProps) {
         value={keywords}
         onChange={(e) => setKeywords(e.target.value)}
       />
-      <span className="icon-button hover transition-custom">
+      <span className="icon-button hover">
         <MdClear title="Clear text" onClick={() => setKeywords('')} />
       </span>
-      <span className="icon-button hover transition-custom">
+      <span className="icon-button hover">
         <RiSendPlane2Line title="Search" onClick={() => props.action(keywords)} />
       </span>
     </div>

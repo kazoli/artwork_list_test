@@ -36,7 +36,7 @@ export const initialArtworkReduxState: tArtworkReduxState = {
   mainListKeywords: '',
   mainListLimit: 24,
   mainListPage: 1,
-  mainListTotalPage: 0,
+  mainListTotalPages: 0,
   mainListQuery: '',
   mainList: [],
 

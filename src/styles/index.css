@@ -17,6 +17,10 @@
 }
 
 @layer components {
+  .transition-custom {
+    @apply transition-all duration-300;
+  }
+
   .layout-positioner {
     @apply m-[0_auto] px-[15px] max-w-[1200px];
   }
@@ -39,7 +43,7 @@
 
   .link-button,
   .icon-button {
-    @apply flex items-center justify-center cursor-pointer shadow-[inset_0_0_2px_1px_#979797];
+    @apply flex items-center justify-center cursor-pointer shadow-[inset_0_0_2px_1px_#979797] transition-custom;
   }
 
   .link-button {
@@ -70,10 +74,6 @@
 
   .list-element {
     @apply relative flex items-center gap-[10px] bg-[#fff] shadow-[0_0_0_1px_#d0d0d0] p-[10px];
-  }
-
-  .transition-custom {
-    @apply transition-all duration-300;
   }
 }
 

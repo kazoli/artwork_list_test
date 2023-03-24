@@ -59,7 +59,7 @@ function Main() {
             <ListBody list={artwork.mainList} view={artwork.listView} />
             <ListFooter
               result={artwork.mainListResult}
-              totalPage={artwork.mainListTotalPage}
+              totalPages={artwork.mainListTotalPages}
               page={artwork.mainListPage}
             />
           </>

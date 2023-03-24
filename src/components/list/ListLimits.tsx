@@ -36,7 +36,7 @@ function ListLimits(props: tProps) {
       selector={dropDown.selected}
       classContainer="list-element items-start"
       classList="left-0 mt-[35px] whitespace-nowrap"
-      classElement="block cursor-pointer mt-[5px] p-[10px] bg-[#fff] shadow-[0_0_0_1px_#d0d0d0] hover:shadow-[0_0_0_1px_#b17640] hover:text-highlighted"
+      classElement="transition-custom block cursor-pointer mt-[5px] p-[10px] bg-[#fff] shadow-[0_0_0_1px_#d0d0d0] hover:shadow-[0_0_0_1px_#b17640] hover:text-highlighted"
       options={dropDown.options}
       action={(value) => props.action(value)}
     />

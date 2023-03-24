@@ -17,7 +17,7 @@ export type tArtworkReduxState = {
   mainListKeywords: string;
   mainListLimit: number;
   mainListPage: number;
-  mainListTotalPage: number;
+  mainListTotalPages: number;
   mainListQuery: string;
   mainList: tArtworkBaseData[];
 

@@ -22,9 +22,7 @@ function ImageBlock(props: tProps) {
       onClick={() => setBigImg(!bigImg)}
     >
       {bigImg && (
-        <AiOutlineClose
-          className={`fixed top-[10px] right-[10px] bg-black/20 text-[#fff] text-[30px]`}
-        />
+        <AiOutlineClose className="fixed top-[10px] right-[10px] bg-black/20 text-[#fff] text-[30px]" />
       )}
       <img
         src={props.src}

@@ -36,4 +36,4 @@ export const arrayIncludes = (
   array: { [key: string]: string | number | boolean }[],
   key: string,
   value: string | number | boolean,
-) => array.find((element) => String(element[key]) === String(value));
+) => array.find((element) => element[key] === value);

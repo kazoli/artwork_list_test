@@ -5,18 +5,18 @@ import { BiArrowToLeft, BiLeftArrowAlt, BiRightArrowAlt } from 'react-icons/bi';
 import LinkButton from '../general/LinkButton';
 
 type tProps = {
-  totalPage: tArtworkReduxState['mainListTotalPage'];
+  totalPages: tArtworkReduxState['mainListTotalPages'];
   page: tArtworkReduxState['mainListPage'];
 };
 
 function ListPager(props: tProps) {
   const dispatch = useAppDispatch();
   const prevPage = props.page === 1 ? 0 : props.page - 1;
-  const nextPage = props.page === props.totalPage ? 0 : props.page + 1;
+  const nextPage = props.page === props.totalPages ? 0 : props.page + 1;
 
   return (
     <div className="list-element">
-      {props.totalPage === 1 ? (
+      {props.totalPages === 1 ? (
         '1 page'
       ) : (
         <>

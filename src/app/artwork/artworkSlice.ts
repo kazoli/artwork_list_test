@@ -72,7 +72,7 @@ const artworkSlice = createSlice({
       // if setting of favorite comes from details page
       state.details.favorite = false;
     },
-    artworkSetFavouriteListKeywords: (
+    artworkSetFavoriteListKeywords: (
       state,
       action: PayloadAction<tArtworkReduxState['favoriteListKeywords']>,
     ) => {
@@ -80,7 +80,7 @@ const artworkSlice = createSlice({
       state.favoriteListKeywords = action.payload.trim();
     },
     artworkResetDetails: (state) => {
-      // deatils object is set back to initial state
+      // details object is set back to initial state
       state.details = initialArtworkDetails;
     },
   },
@@ -101,7 +101,7 @@ const artworkSlice = createSlice({
         // changing result number of main list
         state.mainListResult = action.payload.total;
         // changing total pages for paginator to work correctly in main list
-        state.mainListTotalPage = action.payload.total_pages;
+        state.mainListTotalPages = action.payload.total_pages;
       })
       .addCase(artworkGetMainList.rejected, (state) => {
         state.status = 'failed';
@@ -136,7 +136,7 @@ export const {
   artworkSetListView,
   artworkAddFavorite,
   artworkRemoveFavorite,
-  artworkSetFavouriteListKeywords,
+  artworkSetFavoriteListKeywords,
   artworkResetDetails,
 } = artworkSlice.actions;
 export default artworkSlice.reducer;

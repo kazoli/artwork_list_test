@@ -5,7 +5,7 @@ import {
   artworkSetMainListKeywords,
   artworkSetMainListLimit,
   artworkSetListView,
-  artworkSetFavouriteListKeywords,
+  artworkSetFavoriteListKeywords,
 } from '../../app/artwork/artworkSlice';
 import ListSearch from './ListSearch';
 import ListResult from './ListResult';
@@ -31,7 +31,7 @@ function ListHeader(props: tProps) {
           dispatch(
             props.mainList
               ? artworkSetMainListKeywords(value)
-              : artworkSetFavouriteListKeywords(value),
+              : artworkSetFavoriteListKeywords(value),
           )
         }
       />
