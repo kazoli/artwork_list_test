@@ -4,13 +4,15 @@ import HeaderNavigation from './HeaderNavigation';
 import HeaderMenu from './HeaderMenu';
 
 function Header() {
-  const [position, setPosition] = useState('top-0');
+  const initialPosition = 'top-0';
+  const [position, setPosition] = useState(initialPosition);
+  const hideMenu = position !== initialPosition;
 
   // header show only at up scrolling
   useEffect(() => {
-    const prev = { top: window.scrollY, position: 'top-0' };
+    const prev = { top: window.scrollY, position: initialPosition };
     const updateScrollDirection = () => {
-      const currPosition = window.scrollY > prev.top ? 'top-[-100px]' : 'top-0';
+      const currPosition = window.scrollY > prev.top ? 'top-[-100px]' : initialPosition;
       if (prev.position !== currPosition) {
         // scroll direction change
         setPosition(currPosition);
@@ -32,7 +34,7 @@ function Header() {
       <div className="layout-positioner flex items-center justify-between gap-[60px]">
         <HeaderLogo />
         <HeaderNavigation />
-        <HeaderMenu />
+        <HeaderMenu hide={hideMenu} />
       </div>
     </header>
   );
