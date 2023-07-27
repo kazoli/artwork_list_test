@@ -35,7 +35,7 @@ function Favorites() {
         {!favoriteList.length ? (
           <ListBodyEmpty />
         ) : (
-          <ListBody list={favoriteList} view={artwork.listView} />
+          <ListBody listType="favorites" list={favoriteList} view={artwork.listView} />
         )}
       </>
     </DefaultLayout>

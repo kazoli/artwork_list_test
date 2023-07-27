@@ -2,6 +2,7 @@ import { tArtworkBaseData, tArtworkReduxState } from '../../app/artwork/artworkT
 import ListBodyElement from './ListBodyElement';
 
 type tProps = {
+  listType: '' | 'favorites';
   list: tArtworkBaseData[];
   view: tArtworkReduxState['listView'];
 };
@@ -12,7 +13,7 @@ function ListBody(props: tProps) {
   return (
     <section className={`grid gap-[15px] ${view}`}>
       {props.list.map((data) => (
-        <ListBodyElement key={data.id} data={data} />
+        <ListBodyElement key={data.id} listType={props.listType} data={data} />
       ))}
     </section>
   );

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
-import NoImage from '../../utils/no_image.png';
+import Image from './Image';
 
 type tProps = {
   src: string;
@@ -24,15 +24,7 @@ function ImageBlock(props: tProps) {
       {bigImg && (
         <AiOutlineClose className="fixed top-[10px] right-[10px] bg-black/20 text-[#fff] text-[30px]" />
       )}
-      <img
-        src={props.src}
-        alt={props.alt}
-        className={`${imgClass} bg-[#fff] block`}
-        onError={(e) => {
-          e.currentTarget.onerror = null; // prevents looping
-          e.currentTarget.src = NoImage; // loads no image
-        }}
-      />
+      <Image className={`${imgClass} bg-[#fff] block`} src={props.src} alt={props.alt} />
     </div>
   );
 }

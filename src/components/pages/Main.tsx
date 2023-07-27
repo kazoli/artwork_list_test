@@ -56,7 +56,7 @@ function Main() {
           <ListBodyEmpty />
         ) : (
           <>
-            <ListBody list={artwork.mainList} view={artwork.listView} />
+            <ListBody listType="" list={artwork.mainList} view={artwork.listView} />
             <ListFooter
               result={artwork.mainListResult}
               totalPages={artwork.mainListTotalPages}

@@ -5,6 +5,7 @@ import ImageBlock from '../general/ImageBlock';
 import FavoriteButton from '../general/FavoriteButton';
 
 type tProps = {
+  listType: '' | 'favorites';
   data: tArtworkBaseData;
 };
 
@@ -15,6 +16,7 @@ function ListBodyElement(props: tProps) {
       <div className="flex-[10000_10000_275px] flex flex-col justify-between gap-[10px]">
         <Link
           to={`/details/${props.data.id}`}
+          state={{ from: props.listType }}
           className="transition-custom hover:text-[#b17640] text-[1.25rem] outline-0"
         >
           {props.data.title}

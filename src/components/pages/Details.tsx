@@ -1,15 +1,19 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/general/hooks';
 import { artworkGetDetails } from '../../app/artwork/artworkThunks';
 import { artworkApiImageUrl, artworkApiUrl } from '../../app/artwork/artworkInitialStates';
 import { artworkResetDetails } from '../../app/artwork/artworkSlice';
+import { TiArrowBackOutline } from 'react-icons/ti';
 import DefaultLayout from '../layout/DefaultLayout';
 import MissingData from '../general/MissingData';
 import ImageBlock from '../general/ImageBlock';
 import FavoriteButton from '../general/FavoriteButton';
+import LinkButton from '../general/LinkButton';
 
 function Details() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const params = useParams();
   const dispatch = useAppDispatch();
   const artwork = useAppSelector((state) => state.artwork);
@@ -47,14 +51,22 @@ function Details() {
                     {artwork.details.department}
                   </section>
                 </div>
-                <FavoriteButton
-                  data={{
-                    id: artwork.details.id,
-                    imageId: artwork.details.imageId,
-                    title: artwork.details.title,
-                    favorite: artwork.details.favorite,
-                  }}
-                />
+                <div className="flex flex-wrap gap-[10px]">
+                  <LinkButton
+                    class="favorite-button"
+                    action={() => navigate(`/${location.state ? location.state.from : ''}`)}
+                    icon={<TiArrowBackOutline className="mr-[5px] text-[1.1rem]" />}
+                    text="Back to list"
+                  />
+                  <FavoriteButton
+                    data={{
+                      id: artwork.details.id,
+                      imageId: artwork.details.imageId,
+                      title: artwork.details.title,
+                      favorite: artwork.details.favorite,
+                    }}
+                  />
+                </div>
               </div>
             </div>
           )

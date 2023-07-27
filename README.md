@@ -1,30 +1,44 @@
 #DESCRIPTION
 
-React and redux-toolkit based artwork frontend test with tailwind CSS
+React and redux-toolkit based artwork frontend test with tailwind CSS. Art Institute of Chicago API for the backend: https://api.artic.edu/api/v1/artworks
+
+#LIVE DEMO
+
+https://kazoli.github.io/artwork_list_test
 
 #FEATURES
 
-Main page list, favorite list and artwork details. Artworks can be added or removed from favorites from all pages. Clicking on images is enlarging them.
+1. Listing random arts and their details in main list
+2. Artworks can be filter if you enter keywords in search field in all lists
+3. List and grid layout can be set in all lists
+4. Clicking on images will enlarge them
+5. Clicking on an artwork title will open the details
+6. You can add and remove artworks to favorites in all lists
+7. Results per page can be set in main list
+8. Main list can be paginate at the bottom of the list
+9. You can move among lists in header
+10. Header will disapear at scrolling down and appear at scrolling up
 
-#RUN THE APP IN DEVELOPMENT MODE
+#BEFORE RUN ANY CODE
 
-1. Enter into the main folder of application in any command line
-2. Typing in command line and run: "npm start"
-3. App will start on URL http://localhost:3000/
+1. Use a command line, enter in the main folder and install packages: "npm i"
 
-#RUN THE APP IN PRODUCTION MODE
+#RUN DEVELOPMENT
 
-1. Enter into the main folder of application in any command line
-2. Typing in command line and run: "npm run build"
-3. You may serve it with a static server by typing in command line and run: "serve -s build"
-4. App will start on that URL that static server will display in the command line
+1. Use a command line, enter in the main folder and start the website: "npm start"
+2. Open in browser: http://localhost:3000/
+
+#RUN PRODUCTION
+
+1. Use a command line, enter in the main folder and run this command: "npm run build"
+2. You may serve it with a static server by typing in command line and run: "serve -s build"
+3. App will start on that URL that static server will display in the command line
 
 #RUN TESTS
 
-1. Enter into the main folder of application in any command line
-2. Typing in command line and run: "npm test"
+1. Use a command line, enter in the main folder and run this command: "npm test"
 
 #RUN THE APP IN DOCKER
 
-1. In command line go into the main folder and run: "docker-compose up"
+1. Use a command line, enter in the main folder and run this command: "docker-compose up"
 2. Open in browser: http://localhost:3000/
