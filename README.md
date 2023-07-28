@@ -25,7 +25,7 @@ https://kazoli.github.io/artwork_list_test
 
 #RUN DEVELOPMENT
 
-1. Use a command line, enter in the main folder and start the website: "npm start"
+1. Use a command line, enter in the main folder and run this command: "npm start"
 2. Open in browser: http://localhost:3000/
 
 #RUN PRODUCTION
